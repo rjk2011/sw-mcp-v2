@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:uitest/screens/casualty/casualty_batdokview_screen.dart';
+import 'package:uitest/screens/casualty/mobile/casualty_batdokview_screen.dart';
 
 import '../screens/casualty/caualty_main_screen.dart';
 

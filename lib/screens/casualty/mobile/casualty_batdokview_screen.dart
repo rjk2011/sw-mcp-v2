@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:uitest/dto/casualty_dto.dart';
-import '../../dao/casualty_mock_dao.dart';
+import '../../../dao/casualty_mock_dao.dart';
 
 class CasualtyScreenBatdok extends StatelessWidget {
   final CasualtyDAO casualtyDAO = CasualtyDAO();

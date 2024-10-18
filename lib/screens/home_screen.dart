@@ -31,7 +31,6 @@ class HomeScreen extends StatelessWidget {
 
       drawer: CustomDrawer(),  // Use the CustomDrawer widget
 
-
     );
   }
 }
