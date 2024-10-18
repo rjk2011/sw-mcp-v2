@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:uitest/screens/casualty/mobile/casualty_batdokview_screen.dart';
-
-import '../screens/casualty/caualty_main_screen.dart';
+import '../screens/casualty/mobile/casualty_mobile_landscape_screen.dart';
+import '../screens/casualty/mobile/casualty_mobile_portrait_screen.dart';
 
 class CustomDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Get the current theme's scaffold background color
     Color backgroundColor = Theme.of(context).scaffoldBackgroundColor;
+
+    // Determine if the device is in portrait or landscape mode
+    bool isPortrait = MediaQuery.of(context).orientation == Orientation.portrait;
 
     return Drawer(
       child: Container(
@@ -22,10 +25,6 @@ class CustomDrawer extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Image.asset(
-                  //   'assets/logo.png', // Your logo path
-                  //   height: 50,
-                  // ),
                   SizedBox(height: 20),
                   Text(
                     'SIMWERX', // Brand name or title
@@ -38,6 +37,7 @@ class CustomDrawer extends StatelessWidget {
                 ],
               ),
             ),
+            // Home Option
             ListTile(
               leading: Icon(Icons.home),
               title: Text('Home'),
@@ -46,17 +46,47 @@ class CustomDrawer extends StatelessWidget {
                 // Navigate to Home Page
               },
             ),
-            ListTile(
-              leading: Icon(Icons.person),
-              title: Text('Casualty'),
-              onTap: () {
-                Navigator.pop(context); // Close the drawer
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => CasualtyScreen()),  // Push CasualtyScreen
-                );
-              },
-            ),
+            // Casualty Option (Single entry with dynamic behavior)
+            if (isPortrait)
+              ListTile(
+                leading: Icon(Icons.person),
+                title: Text('Casualty'),
+                onTap: () {
+                  Navigator.pop(context); // Close the drawer
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => CasualtyMobilePortraitScreen()),  // Push CasualtyPortraitScreen
+                  );
+                },
+              )
+            else
+              ExpansionTile(
+                leading: Icon(Icons.person),
+                title: Text('Casualty'),
+                children: <Widget>[
+                  ListTile(
+                    title: Text('Casualty Summary'),
+                    onTap: () {
+                      Navigator.pop(context); // Close the drawer
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => CasualtyMobileLandscapeScreen()),  // Navigate to Casualty Summary screen
+                      );
+                    },
+                  ),
+                  ListTile(
+                    title: Text('Vitals'),
+                    onTap: () {
+                      Navigator.pop(context); // Close the drawer
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => CasualtyScreenBatdok()),  // Navigate to Current Vitals screen
+                      );
+                    },
+                  ),
+                ],
+              ),
+            // Insights Option
             ListTile(
               leading: Icon(Icons.insights),
               title: Text('Insights'),
@@ -65,6 +95,7 @@ class CustomDrawer extends StatelessWidget {
                 // Navigate to Insights Page
               },
             ),
+            // Reports Option
             ListTile(
               leading: Icon(Icons.report),
               title: Text('Reports'),
@@ -73,6 +104,7 @@ class CustomDrawer extends StatelessWidget {
                 // Navigate to Reports Page
               },
             ),
+            // BATDOK Option
             ListTile(
               leading: Icon(Icons.person),
               title: Text('BATDOK '),
@@ -80,11 +112,12 @@ class CustomDrawer extends StatelessWidget {
                 Navigator.pop(context); // Close the drawer
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => CasualtyScreenBatdok()),  // Push CasualtyScreen
+                  MaterialPageRoute(builder: (context) => CasualtyScreenBatdok()),  // Navigate to Casualty BATDOK screen
                 );
               },
             ),
             Divider(),
+            // Settings Option
             ListTile(
               leading: Icon(Icons.settings),
               title: Text('Settings'),
