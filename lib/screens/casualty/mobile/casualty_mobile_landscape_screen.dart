@@ -20,19 +20,16 @@ class _CasualtyMobileLandscapeScreenState extends State<CasualtyMobileLandscapeS
 
   @override
   Widget build(BuildContext context) {
-
     // Fetch the list of casualties
     List<CasualtySummary> casualties = casualtyDAO.getCasualtyVitalsInsightCountSummary();
 
-    // Check if the device is in portrait or landscape mode
-    bool isPortrait = MediaQuery.of(context).orientation == Orientation.portrait;
+    // Sort the list of casualties based on the selected column and direction
+    casualties.sort((a, b) => _compareCasualties(a, b));
 
     return Scaffold(
       appBar: AppBar(
         title: Text('Simwerx Guardian Twin 2'),
-        actions: [
-
-        ],
+        actions: [],
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -40,7 +37,6 @@ class _CasualtyMobileLandscapeScreenState extends State<CasualtyMobileLandscapeS
       ),
     );
   }
-
 
   // Function to build the landscape layout (Table)
   Widget _buildLandscapeLayout(List<CasualtySummary> casualties) {
@@ -109,6 +105,34 @@ class _CasualtyMobileLandscapeScreenState extends State<CasualtyMobileLandscapeS
         }).toList(),
       ),
     );
+  }
+
+  // Function to compare casualties for sorting
+  int _compareCasualties(CasualtySummary a, CasualtySummary b) {
+    switch (_sortColumn) {
+      case 'name':
+        return _sortAscending
+            ? a.name.compareTo(b.name)
+            : b.name.compareTo(a.name);
+      case 'lastUpdated':
+        return _sortAscending
+            ? a.lastUpdated.compareTo(b.lastUpdated)
+            : b.lastUpdated.compareTo(a.lastUpdated);
+      case 'severity':
+        return _sortAscending
+            ? a.severity.compareTo(b.severity)
+            : b.severity.compareTo(a.severity);
+      case 'vitals':
+        return _sortAscending
+            ? a.vitals.compareTo(b.vitals)
+            : b.vitals.compareTo(a.vitals);
+      case 'insights':
+        return _sortAscending
+            ? a.insights.compareTo(b.insights)
+            : b.insights.compareTo(a.insights);
+      default:
+        return 0;
+    }
   }
 
   // Helper to get the sort column index based on the _sortColumn variable
