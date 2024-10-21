@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:uitest/components/moi/injury_selection_widget.dart';
 
 import '../../components/vitals/vitals_grid.dart';
 import 'casualty_detail_screen.dart';
@@ -118,7 +119,7 @@ class _CasualtyDetailHomeState extends State<CasualtyDetailHome> with SingleTick
         children: [
           CasualtyDetailScreen(casualtyId: widget.casualtyId),
           // PlaceholderTabScreen(tabName: 'Details'),
-          PlaceholderTabScreen(tabName: 'MOI'),
+          InjurySelectionWidget(),
           VitalGrid(casualtyId: widget.casualtyId, minTilesInFirstRow:3),
           PlaceholderTabScreen(tabName: 'Treatments'),
           PlaceholderTabScreen(tabName: 'Complications'),
