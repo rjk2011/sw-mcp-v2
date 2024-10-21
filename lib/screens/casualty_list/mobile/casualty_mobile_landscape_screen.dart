@@ -3,6 +3,7 @@ import '../../../components/severitycard_widget.dart';
 import '../../../components/casualtysummarycard_widget.dart';
 import '../../../dao/casualty_mock_dao.dart';
 import '../../../dto/casualty_dto.dart';
+import '../../casualty_detail/casualty_detail_home.dart';
 
 class CasualtyMobileLandscapeScreen extends StatefulWidget {
   @override
@@ -94,6 +95,17 @@ class _CasualtyMobileLandscapeScreenState extends State<CasualtyMobileLandscapeS
         ],
         rows: casualties.map((casualty) {
           return DataRow(
+            onSelectChanged: (selected) {
+              if (selected != null && selected) {
+                // Navigate to CasualtyDetailHome and pass casualtyId
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => CasualtyDetailHome(casualtyId: casualty.casualtyId),
+                  ),
+                );
+              }
+            },
             cells: [
               DataCell(Text(casualty.name)),
               DataCell(Text(casualty.lastUpdated)),

@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 
+import '../screens/casualty_detail/casualty_detail_home.dart';
+
 class CasualtySummaryCard extends StatelessWidget {
   final String name;
   final String lastUpdated;
   final int vitals;
   final int insights;
   final int severity;
+  final String? casualtyId; // Add casualtyId as an optional parameter
 
   // Constructor to accept necessary parameters
   CasualtySummaryCard({
@@ -14,6 +17,7 @@ class CasualtySummaryCard extends StatelessWidget {
     required this.vitals,
     required this.insights,
     required this.severity,
+    this.casualtyId, // Include casualtyId in constructor
   });
 
   // Determine icon color based on severity
@@ -43,7 +47,7 @@ class CasualtySummaryCard extends StatelessWidget {
         subtitle: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Last Updated: $lastUpdated'),
+            Text('Last Updated aaa: $lastUpdated'),
             Row(
               children: [
                 Icon(Icons.favorite, size: 16),
@@ -60,8 +64,23 @@ class CasualtySummaryCard extends StatelessWidget {
             ),
           ],
         ),
-        trailing: Icon(Icons.arrow_forward_ios),
+        // Wrap the trailing icon in an InkWell to make it clickable
+        trailing: InkWell(
+          onTap: () {
+            if (casualtyId != null) {
+              // Navigate to CasualtyDetailScreen and pass the casualtyId
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => CasualtyDetailHome(casualtyId: casualtyId!),
+                ),
+              );
+            }
+          },
+          child: Icon(Icons.arrow_forward_ios),
+        ),
       ),
     );
   }
 }
+

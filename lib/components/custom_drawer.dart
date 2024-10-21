@@ -5,6 +5,7 @@ import '../screens/casualty_detail/casualty_detail_screen.dart';
 import '../screens/casualty_list/mobile/casualty_mobile_landscape_screen.dart';
 import '../screens/casualty_list/mobile/casualty_mobile_portrait_screen.dart';
 import '../screens/settings_screen.dart';
+import '../screens/test_screen.dart';
 
 class CustomDrawer extends StatelessWidget {
   @override
@@ -48,7 +49,7 @@ class CustomDrawer extends StatelessWidget {
                 Navigator.pop(context); // Close the drawer
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => CasualtyDetailHome()),  // Push CasualtyPortraitScreen
+                  MaterialPageRoute(builder: (context) => CasualtyDetailHome(casualtyId: "5678s",)),  // Push CasualtyPortraitScreen
                 );
                 // Navigate to Home Page
               },
@@ -99,7 +100,10 @@ class CustomDrawer extends StatelessWidget {
               title: Text('Insights'),
               onTap: () {
                 Navigator.pop(context); // Close the drawer
-                // Navigate to Insights Page
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => CasualtyButtonScreen(casualtyId: '12345')),  // Navigate to Current Vitals screen
+                );
               },
             ),
             // Reports Option

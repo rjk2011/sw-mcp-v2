@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:uitest/dto/casualty_dto.dart';
 import '../../../dao/casualty_mock_dao.dart';
+import '../../casualty_detail/casualty_detail_home.dart';
 
 class CasualtyScreenBatdok extends StatelessWidget {
   final CasualtyDAO casualtyDAO = CasualtyDAO();
@@ -33,14 +34,14 @@ class CasualtyScreenBatdok extends StatelessWidget {
         child: SingleChildScrollView(
           scrollDirection: Axis.horizontal, // Make scrolling horizontal
           child: Row(
-            children: casualties.map((casualty) => buildCasualtyCard(casualty)).toList(),
+            children: casualties.map((casualty) => buildCasualtyCard(context,casualty)).toList(),
           ),
         ),
       ),
     );
   }
 
-  Widget buildCasualtyCard(Casualty casualty) {
+  Widget buildCasualtyCard(BuildContext context, Casualty casualty) {
     return Container(
       width: 200, // Set a fixed width for each card
       child: Card(
@@ -70,7 +71,13 @@ class CasualtyScreenBatdok extends StatelessWidget {
               SizedBox(height: 10),
               ElevatedButton(
                 onPressed: () {
-                  // Add functionality for Document button
+                  // Navigate to CasualtyDetailHome and pass the casualtyId
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => CasualtyDetailHome(casualtyId: casualty.casualtyId),
+                    ),
+                  );
                 },
                 child: Text('Document'),
               ),

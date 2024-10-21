@@ -3,6 +3,7 @@ import '../../../components/severitycard_widget.dart';
 import '../../../components/casualtysummarycard_widget.dart';
 import '../../../dao/casualty_mock_dao.dart';
 import '../../../dto/casualty_dto.dart';
+import '../../casualty_detail/casualty_detail_screen.dart';
 
 class CasualtyMobileScreen extends StatefulWidget {
   @override
@@ -59,7 +60,7 @@ class _CasualtyMobileScreenState extends State<CasualtyMobileScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Simwerx Guardian Twin 2'),
+        title: Text('Casualties'),
         actions: [
           IconButton(
             icon: Icon(Icons.search),
@@ -116,16 +117,28 @@ class _CasualtyMobileScreenState extends State<CasualtyMobileScreen> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
-              'Casualty List',
-              style: Theme.of(context).textTheme.titleMedium,
+            InkWell(
+              onTap: () {
+                // Navigate to CasualtyDetailScreen and pass a default casualtyId
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => CasualtyDetailScreen(casualtyId: 'default_id'), // Pass a default casualtyId
+                  ),
+                );
+              },
+              child: Text(
+                'Casualty List 111123',
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
             ),
             ElevatedButton(
               onPressed: () {
                 // Show the sort bottom sheet
                 _showSortBottomSheet(context);
               },
-              child: Text('Sort'),
+              child: Text('Sort123'),
             ),
           ],
         ),

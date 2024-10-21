@@ -3,6 +3,11 @@ import 'package:flutter/material.dart';
 import 'casualty_detail_screen.dart';
 
 class CasualtyDetailHome extends StatefulWidget {
+
+  final String casualtyId;
+
+  CasualtyDetailHome({required this.casualtyId});
+
   @override
   _CasualtyDetailHomeState createState() => _CasualtyDetailHomeState();
 }
@@ -110,7 +115,7 @@ class _CasualtyDetailHomeState extends State<CasualtyDetailHome> with SingleTick
       body: TabBarView(
         controller: _tabController,
         children: [
-          CasualtyDetailScreen(),
+          CasualtyDetailScreen(casualtyId: widget.casualtyId),
           // PlaceholderTabScreen(tabName: 'Details'),
           PlaceholderTabScreen(tabName: 'MOI'),
           PlaceholderTabScreen(tabName: 'Vitals'),

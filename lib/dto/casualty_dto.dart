@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class CasualtySummary {
+  final String casualtyId;
+
   final String name;
   final String lastUpdated;
   final int vitals;
@@ -9,6 +11,7 @@ class CasualtySummary {
 
   // Constructor
   CasualtySummary({
+    required this.casualtyId,
     required this.name,
     required this.lastUpdated,
     required this.vitals,
@@ -19,6 +22,7 @@ class CasualtySummary {
 }
 
 class Casualty {
+  final String casualtyId;
   final String name;
   final String traumaType;
   final String time;
@@ -30,6 +34,7 @@ class Casualty {
   final String ibp; // IBP (Invasive Blood Pressure)
 
   Casualty({
+    required this.casualtyId,
     required this.name,
     required this.traumaType,
     required this.time,

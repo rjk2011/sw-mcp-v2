@@ -7,6 +7,7 @@ class CasualtyDAO {
   List<Casualty> getCasualtiesCurrentVitals() {
     return [
       Casualty(
+        casualtyId: '12334',
         name: 'Richard James',
         traumaType: 'Trauma',
         time: 'Oct 17, 15:34',
@@ -18,6 +19,7 @@ class CasualtyDAO {
         ibp: '113/87',
       ),
       Casualty(
+        casualtyId: '12334',
         name: 'Mack Gerhardt',
         traumaType: 'Trauma',
         time: 'Oct 17, 14:50',
@@ -29,6 +31,7 @@ class CasualtyDAO {
         ibp: '120/82',
       ),
       Casualty(
+        casualtyId: '12334',
         name: 'Charles Grey',
         traumaType: 'Trauma',
         time: 'Oct 17, 14:30',
@@ -40,6 +43,7 @@ class CasualtyDAO {
         ibp: '118/76',
       ),
       Casualty(
+        casualtyId: '12334',
         name: 'Jonas Blane',
         traumaType: 'Trauma',
         time: 'Oct 17, 13:45',
@@ -51,6 +55,8 @@ class CasualtyDAO {
         ibp: '--/--',
       ),
       Casualty(
+        casualtyId: '12334',
+
         name: 'John Smith',
         traumaType: 'Trauma',
         time: 'Oct 17, 13:45',
@@ -69,6 +75,7 @@ class CasualtyDAO {
   List<CasualtySummary> getCasualtyVitalsInsightCountSummary() {
     return [
       CasualtySummary(
+        casualtyId: '1234',
         name: 'Richard James',
         lastUpdated: '2024-10-17 15:34',
         vitals: 8,
@@ -76,6 +83,7 @@ class CasualtyDAO {
         severity: 1,
       ),
       CasualtySummary(
+        casualtyId: '4567',
         name: 'Mack Gerhardt',
         lastUpdated: '2024-10-17 14:50',
         vitals: 3,
@@ -83,6 +91,7 @@ class CasualtyDAO {
         severity: 4,
       ),
       CasualtySummary(
+        casualtyId: '123413',
         name: 'Charles Grey',
         lastUpdated: '2024-10-17 14:30',
         vitals: 5,
@@ -90,6 +99,7 @@ class CasualtyDAO {
         severity: 3,
       ),
       CasualtySummary(
+        casualtyId: '123411',
         name: 'Jonas Blane',
         lastUpdated: '2024-10-17 13:45',
         vitals: 0,
@@ -97,6 +107,7 @@ class CasualtyDAO {
         severity: 3,
       ),
       CasualtySummary(
+        casualtyId: '7890',
         name: 'John Smith',
         lastUpdated: '2024-10-17 13:45',
         vitals: 10,

@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
 class CasualtyDetailScreen extends StatefulWidget {
+  final String casualtyId;  // Accept casualtyId
+
+  CasualtyDetailScreen({required this.casualtyId});  // Update constructor
+
   @override
   _CasualtyDetailScreenState createState() => _CasualtyDetailScreenState();
 }
@@ -33,7 +37,7 @@ class _CasualtyDetailScreenState extends State<CasualtyDetailScreen> {
             children: [
               TextFormField(
                 controller: casualtyIdController,
-                decoration: InputDecoration(labelText: 'Casualty ID'),
+                decoration: InputDecoration(labelText: 'Casualty ID '),
                 validator: (value) => value!.isEmpty ? 'Enter Casualty ID' : null,
               ),
               TextFormField(
