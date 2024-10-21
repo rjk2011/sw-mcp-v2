@@ -3,6 +3,7 @@ import '../../../components/severitycard_widget.dart';
 import '../../../components/casualtysummarycard_widget.dart';
 import '../../../dao/casualty_mock_dao.dart';
 import '../../../dto/casualty_dto.dart';
+import '../../casualty_detail/casualty_detail_home.dart';
 
 class CasualtyMobilePortraitScreen extends StatefulWidget {
   @override
@@ -54,12 +55,9 @@ class _CasualtyMobilePortraitScreenState extends State<CasualtyMobilePortraitScr
     // Sort the casualties based on the selected column
     _sortCasualties(casualties);
 
-    // // Check if the device is in portrait or landscape mode
-    // bool isPortrait = MediaQuery.of(context).orientation == Orientation.portrait;
-
     return Scaffold(
       appBar: AppBar(
-        title: Text('Simwerx Guardian Twin 2'),
+        title: Text('Casualties'),
         actions: [
           IconButton(
             icon: Icon(Icons.search),
@@ -132,12 +130,23 @@ class _CasualtyMobilePortraitScreenState extends State<CasualtyMobilePortraitScr
             itemCount: casualties.length,
             itemBuilder: (context, index) {
               CasualtySummary casualty = casualties[index];
-              return CasualtySummaryCard(
-                name: casualty.name,
-                lastUpdated: casualty.lastUpdated,
-                vitals: casualty.vitals,
-                insights: casualty.insights,
-                severity: casualty.severity,
+              return GestureDetector(
+                onTap: () {
+                  // Navigate to the CasualtyDetailHome screen with the casualtyId
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => CasualtyDetailHome(casualtyId: casualty.casualtyId),
+                    ),
+                  );
+                },
+                child: CasualtySummaryCard(
+                  name: casualty.name,
+                  lastUpdated: casualty.lastUpdated,
+                  vitals: casualty.vitals,
+                  insights: casualty.insights,
+                  severity: casualty.severity,
+                ),
               );
             },
           ),
@@ -145,7 +154,6 @@ class _CasualtyMobilePortraitScreenState extends State<CasualtyMobilePortraitScr
       ],
     );
   }
-
 
   // Function to show the sort bottom sheet
   void _showSortBottomSheet(BuildContext context) {

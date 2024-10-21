@@ -7,4 +7,5 @@ flutter clean
 flutter pub get
 flutter build apk --debug
 
+
 flutter build macos --release
