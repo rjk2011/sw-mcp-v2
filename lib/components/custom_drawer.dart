@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:uitest/screens/casualty/mobile/casualty_batdokview_screen.dart';
-import '../screens/casualty/mobile/casualty_mobile_landscape_screen.dart';
-import '../screens/casualty/mobile/casualty_mobile_portrait_screen.dart';
+import 'package:uitest/screens/casualty_list/mobile/casualty_batdokview_screen.dart';
+import '../screens/casualty_detail/casualty_detail_home.dart';
+import '../screens/casualty_detail/casualty_detail_screen.dart';
+import '../screens/casualty_list/mobile/casualty_mobile_landscape_screen.dart';
+import '../screens/casualty_list/mobile/casualty_mobile_portrait_screen.dart';
+import '../screens/settings_screen.dart';
 
 class CustomDrawer extends StatelessWidget {
   @override
@@ -43,6 +46,10 @@ class CustomDrawer extends StatelessWidget {
               title: Text('Home'),
               onTap: () {
                 Navigator.pop(context); // Close the drawer
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => CasualtyDetailHome()),  // Push CasualtyPortraitScreen
+                );
                 // Navigate to Home Page
               },
             ),
@@ -104,18 +111,7 @@ class CustomDrawer extends StatelessWidget {
                 // Navigate to Reports Page
               },
             ),
-            // BATDOK Option
-            ListTile(
-              leading: Icon(Icons.person),
-              title: Text('BATDOK '),
-              onTap: () {
-                Navigator.pop(context); // Close the drawer
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => CasualtyScreenBatdok()),  // Navigate to Casualty BATDOK screen
-                );
-              },
-            ),
+
             Divider(),
             // Settings Option
             ListTile(
@@ -123,7 +119,10 @@ class CustomDrawer extends StatelessWidget {
               title: Text('Settings'),
               onTap: () {
                 Navigator.pop(context); // Close the drawer
-                // Navigate to Settings Page
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SettingsScreen()),  // Push CasualtyPortraitScreen
+                );
               },
             ),
           ],
