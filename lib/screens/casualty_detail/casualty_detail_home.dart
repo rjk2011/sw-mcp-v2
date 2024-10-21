@@ -87,8 +87,8 @@ class _CasualtyDetailHomeState extends State<CasualtyDetailHome> with SingleTick
             controller: _tabController,
             isScrollable: false, // Use full width in landscape mode
             tabs: [
-              buildTabWithBadge('Details'),
-              buildTabWithBadge('MOI'),
+              buildTabWithBadge('General'),
+              buildTabWithBadge('Injury'),
               buildTabWithBadge('Vitals'),
               buildTabWithBadge('Treatments'),
               buildTabWithBadge('Complications'),
@@ -101,8 +101,8 @@ class _CasualtyDetailHomeState extends State<CasualtyDetailHome> with SingleTick
               controller: _tabController,
               isScrollable: true, // Scrollable in portrait mode
               tabs: [
-                buildTabWithBadge('Details'),
-                buildTabWithBadge('MOI'),
+                buildTabWithBadge('General'),
+                buildTabWithBadge('Injury'),
                 buildTabWithBadge('Vitals'),
                 buildTabWithBadge('Treatments'),
                 buildTabWithBadge('Complications'),
